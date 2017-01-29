@@ -1,9 +1,23 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<script src="d3.v4.min.js"></script>
 	</head>
 	<body>
-		
+		<script type="text/javascript">
+		d3.csv('pr.csv', function(data){
+			
+			data.forEach(function(d){
+				var race = d.Offender_Race;
+				var body = d3.select("body");
+				var div = body.append("div");
+				div.html(race);
+			})
+			console.log(data[0]);
+		});
+
+
+		</script>
 	</body>
 </html>
