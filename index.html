@@ -6,15 +6,91 @@
 	</head>
 	<body>
 		<script type="text/javascript">
-		d3.csv('pr.csv', function(data){
-			
+		d3.csv('Electronic_Police_Report_2015.csv', function(data){
+			var numWhite = 0;
+			var numBlack = 0;
+			var numUnknown = 0;
+			var numHispanic = 0;
+			var numAsian = 0;
 			data.forEach(function(d){
 				var race = d.Offender_Race;
-				var body = d3.select("body");
-				var div = body.append("div");
-				div.html(race);
+				if(race == "BLACK"){
+					numBlack++;
+				}
+				else if(race == "" || race == "UNKNOWN"){
+					race = "UNKNOWN";
+					numUnknown++;
+				}
+				else if(race == "WHITE"){
+					numWhite++;
+				}
+				else if(race == "HISPANIC"){
+					numHispanic++;
+				}
+				else if(race == "ASIAN"){
+					numAsian++;
+				}
 			})
-			console.log(data[0]);
+			// var body = d3.select("body");
+			// var p = body.append("p");
+			// p.html(numBlack);
+			// var p = body.append("p");
+			// p.html(numWhite);
+			// var p = body.append("p");
+			// p.html(numUnknown);
+			// var p = body.append("p");
+			// p.html(numHispanic);
+			// var p = body.append("p");
+			// p.html(numAsian);
+			
+			var canvas = d3.select("body").append("svg")
+				.attr("width", 5000)
+				.attr("height", 500)
+
+			canvas
+				.append("rect")
+				.attr("width", function(d) {return numBlack/100;})
+				.attr("height", function(d, i){return i + 50;})
+				.attr("y", 10)
+				.attr("fill", "red");
+			canvas
+				.append("text")
+				.attr("fill", "black")
+				.attr("y", function(d, i){return i * 50 + 50;})
+				.text(function(d){return "Blacks";})
+			canvas
+				.append("rect")
+				.attr("width", function(d) {return numWhite/100;})
+				.attr("height", function(d, i){return i + 50;})
+				.attr("y", 70)
+				.attr("fill", "red");
+			canvas
+				.append("text")
+				.attr("fill", "black")
+				.attr("y", function(d, i){return i * 50 + 110;})
+				.text(function(d){return "Whites";})
+			canvas
+				.append("rect")
+				.attr("width", function(d) {return numHispanic/100;})
+				.attr("height", function(d, i){return i + 50;})
+				.attr("y", 130)	
+				.attr("fill", "red");
+			canvas
+				.append("text")
+				.attr("fill", "black")
+				.attr("y", function(d, i){return i * 50 + 190;})
+				.text(function(d){return "Hispanics";})
+			canvas
+				.append("rect")
+				.attr("width", function(d) {return numAsian/100;})
+				.attr("height", function(d, i){return i + 50;})
+				.attr("y", 190)
+				.attr("fill", "red");
+			canvas
+				.append("text")
+				.attr("fill", "black")
+				.attr("y", function(d, i){return i * 50 + 250;})
+				.text(function(d){return "Asians";})
 		});
 
 
