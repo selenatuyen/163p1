@@ -6,83 +6,13 @@
    		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<script type="text/javascript">
-			d3.csv('Electronic_Police_Report_2015.csv', function(data){
-				var numWhite = 0;
-				var numBlack = 0;
-				var numUnknown = 0;
-				var numHispanic = 0;
-				var numAsian = 0;
-				data.forEach(function(d){
-					var race = d.Offender_Race;
-					if(race == "BLACK"){
-						numBlack++;
-					}
-					else if(race == "" || race == "UNKNOWN"){
-						race = "UNKNOWN";
-						numUnknown++;
-					}
-					else if(race == "WHITE"){
-						numWhite++;
-					}
-					else if(race == "HISPANIC"){
-						numHispanic++;
-					}
-					else if(race == "ASIAN"){
-						numAsian++;
-					}
-				})
-				var total = numBlack + numAsian + numHispanic + numWhite;
-				
-				var canvas = d3.select("body").append("svg")
-					.attr("width", 5000)
-					.attr("height", 500)
-
-				canvas
-					.append("rect")
-					.attr("width", function(d) {return numBlack/100;})
-					.attr("height", function(d, i){return i + 50;})
-					.attr("y", 10)
-					.attr("fill", "red");
-				canvas
-					.append("text")
-					.attr("fill", "black")
-					.attr("y", function(d, i){return i * 50 + 50;})
-					.text(function(d){return "Blacks " + numBlack/total*100 + "%";})
-				canvas
-					.append("rect")
-					.attr("width", function(d) {return numWhite/100;})
-					.attr("height", function(d, i){return i + 50;})
-					.attr("y", 70)
-					.attr("fill", "red");
-				canvas
-					.append("text")
-					.attr("fill", "black")
-					.attr("y", function(d, i){return i * 50 + 110;})
-					.text(function(d){return "Whites " + numWhite/total*100 + "%";})
-				canvas
-					.append("rect")
-					.attr("width", function(d) {return numHispanic/100;})
-					.attr("height", function(d, i){return i + 50;})
-					.attr("y", 130)	
-					.attr("fill", "red");
-				canvas
-					.append("text")
-					.attr("fill", "black")
-					.attr("y", function(d, i){return i * 50 + 190;})
-					.text(function(d){return "Hispanics " + numHispanic/total*100 + "%";})
-				canvas
-					.append("rect")
-					.attr("width", function(d) {return numAsian/100;})
-					.attr("height", function(d, i){return i + 50;})
-					.attr("y", 190)
-					.attr("fill", "red");
-				canvas
-					.append("text")
-					.attr("fill", "black")
-					.attr("y", function(d, i){return i * 50 + 250;})
-					.text(function(d){return "Asians " + numAsian/total*100 + "%";})
-			});
-		</script>
+		<h1>ECS163 Project 1</h1>
+		<h2>Selena Tuyen</h2>
+		<div id="bar">
+			<script src="v1.js"></script>
+		</div>
+		<div id="circ">
+			<script src="v2.js"></script>
+		</div>
 	</body>
 </html>
