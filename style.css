@@ -8,14 +8,23 @@ body{
   font-family: Arial, sans-serif;
   font-weight: 100;
 }
-svg{
-	left-margin:12%;
-	right-margin:5%;
-	padding: 2%;
-	padding-left: 5%;
-}
 
 #bar{
-	position: absolute;
-	height:500px;
+	text-align:center;
+	left: 0;
+	right:0;
+	margin:auto;
+	height:300px;
+	width:700px;
+	background-color: #ffF;
+}
+
+#circ{
+	top:-50%;
+	text-align:center;
+	left:0;
+	right:0;
+	margin:auto;
+	height:300px;
+	width:400px;
 }

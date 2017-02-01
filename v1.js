@@ -1,4 +1,3 @@
-d3.select("body").append("h3").append("text").text("Race of Offenders in New Orleans 2015");
 d3.csv('Electronic_Police_Report_2015.csv', function(data){
 	var numWhite = 0;
 	var numBlack = 0;
@@ -27,7 +26,7 @@ d3.csv('Electronic_Police_Report_2015.csv', function(data){
 	var total = numBlack + numAsian + numHispanic + numWhite;
 	
 	var canvas = d3.select("#bar").append("svg")
-		.attr("width", 5000)
+		.attr("width", 500)
 		.attr("height", 500);
 
 	canvas

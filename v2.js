@@ -1,4 +1,4 @@
-d3.select("body").append("h3").append("text").text("District with the most burgalries");
+// d3.select("body").append("h3").append("text").text("District with the most burgalries");
 d3.csv('Electronic_Police_Report_2015.csv', function(data){
 				var dist1 = 0;
 				var dist2 = 0;
@@ -36,8 +36,40 @@ d3.csv('Electronic_Police_Report_2015.csv', function(data){
 					}
 				})
 
+				var val =[];
+				val.push({dst : dist1});
+				val.push({dst : dist2});
+				val.push({dst : dist3});
+				val.push({dst : dist4});
+
+
+
+				var width = 360;
+				var height = 360;
+				var radius = Math.min(width, height) / 2;
+
+				var color = d3.scaleOrdinal(d3.schemeCategory20b);
+
 				var canvas = d3.select("#circ").append("svg")
-					.attr("width", 5000)
-					.attr("height", 500);
-				canvas.append("")				
+					.attr("width", width)
+					.attr("height", height);
+				canvas.append("g")
+					.attr("transform", "translate(" + (width / 2) + ',' + (height / 2) + ')');
+
+				var arc = d3.arc()
+					.innerRadius(0)
+					.outerRadius(radius);	
+
+				var pie = d3.pie()
+					.value(function(d){return d.dst;})
+					.sort(null);
+
+				var path = canvas.selectAll("path")
+					.data(pie(val))
+					.enter()
+					.append("path")
+					.attr('d', arc)
+					.attr("fill", function(d, i){
+						return color(d.data.label);
+					});			
 });					
