@@ -1,11 +1,11 @@
 body{
   text-align: center;
-  background: #e0ebeb;
-  background: -webkit-linear-gradient(#FFDBCC, #FFFFCC); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#FFDBCC, #FFFFCC); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#FFDBCC, #FFFFCC); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#FFDBCC, #FFFFCC); /* Standard syntax */
-  font-family: Arial, sans-serif;
+  background: #fff;
+/*  background: -webkit-linear-gradient(#FFDBCC, #FFFFCC); 
+  background: -o-linear-gradient(#FFDBCC, #FFFFCC); 
+  background: -moz-linear-gradient(#FFDBCC, #FFFFCC); 
+  background: linear-gradient(#FFDBCC, #FFFFCC); */
+	font-family: 'Comfortaa', sans-serif;
   font-weight: 100;
 }
 
@@ -16,15 +16,24 @@ body{
 	margin:auto;
 	height:300px;
 	width:700px;
-	background-color: #ffF;
+	/*background-color: #ffF;*/
 }
 
 #circ{
-	top:-50%;
 	text-align:center;
 	left:0;
 	right:0;
 	margin:auto;
-	height:300px;
-	width:400px;
+	height:400px;
+	width:700px;
 }
+
+.arc{
+	fill: black;
+	text-align:center;
+}
+
+.legend{
+	margin:auto;
+
+}	
