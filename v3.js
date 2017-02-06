@@ -1,9 +1,23 @@
-// d3.select("body").append("h3").append("text").text("District with the most burgalries");
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+	width = 960 - margin.left - margin.right,
+	height = 500 - margin.top - margin.bottom;
+
+var x = d3.scaleBand()
+			.range([0, width])
+			.padding(0.1);
+var y = d3.scaleLinear()
+			.range([height, 0]);
+
+var svg = d3.select("#vis2").append("svg")
+	.attr("width", width + margin.left + margin.right)
+	.attr("height", height + margin.top + margin.bottom)
+.append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 	if(err){
 		console.log(err);
 	}
-	console.log(data[0]);
 				var dist1 = 0;
 				var dist2 = 0;
 				var dist3 = 0;
@@ -12,113 +26,97 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 				var dist6 = 0;
 				var dist7 = 0;
 				var dist8 = 0;
+				var aslt1 = 0;
+				var aslt2 = 0;
+				var aslt3 = 0;
+				var aslt4 = 0;
+				var aslt5 = 0;				
+				var aslt6 = 0;
+				var aslt7 = 0;			
+				var aslt8 = 0;	
 				data.forEach(function(d){
 					var dist = d.District;
+					var crime = d.Charge_Description;
 					if(dist == 1){
 						dist1++;
+						if(crime.includes("ASSAULT")){
+							aslt1++;
+						}
 					}
 					else if(dist == 2){
 						dist2++;
+						if(crime.includes("ASSAULT")){
+							aslt2++;
+						}	
 					}
 					else if(dist == 3){
 						dist3++;
+						if(crime.includes("ASSAULT")){
+							aslt3++;
+						}
 					}
 					else if(dist == 4){
 						dist4++;
+						if(crime.includes("ASSAULT")){
+							aslt4++;
+						}
 					}
 					else if(dist == 5){
 						dist5++;
+						if(crime.includes("ASSAULT")){
+							aslt5++;
+						}
 					}
 					else if(dist == 6){
 						dist6++;
+						if(crime.includes("ASSAULT")){
+							aslt6++;
+						}
 					}
 					else if(dist == 7){
 						dist7++;
+						if(crime.includes("ASSAULT")){
+							aslt7++;
+						}
 					}
 					else if(dist == 8){
 						dist8++;
+						if(crime.includes("ASSAULT")){
+							aslt8++;
+						}
 					}
 				})
-				var burgCount = 0;
-				data.forEach(function(d){
-					var crime = d.Charge_Description;
-					if(crime.includes("BURGLARY")){
-						burgCount++;
-					}
-				})
-				console.log(burgCount);
-
-				var tot = dist1+dist2+dist3+dist4+dist5+dist6+dist7+dist8;
+ 
+				console.log(aslt1 + " " + aslt2 + " " + aslt3 + " " + aslt4 + " " + aslt5 + " " + aslt6 + " " + aslt7 + " " + aslt8);
+				var burgTot = aslt1 + aslt2 + aslt3 + aslt4 + aslt5 + aslt6 + aslt7 + aslt8;
+				var tot = dist1 + dist2 + dist3 + dist4 + dist5 + dist6 + dist7 + dist8;
 
 				var val =[];
-				val.push({dst : dist1, dnum : 1, num : (dist1/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist2, dnum : 2, num : (dist2/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist3, dnum : 3, num : (dist3/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist4, dnum : 4, num : (dist4/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist5, dnum : 5, num : (dist5/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist6, dnum : 6, num : (dist6/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist7, dnum : 7, num : (dist7/tot*100).toFixed(2) + "%"});
-				val.push({dst : dist8, dnum : 8, num : (dist8/tot*100).toFixed(2) + "%"});
+				val.push({dst : dist1, dnum : "District 1",  aslts: aslt1});
+				val.push({dst : dist2, dnum : "District 2",  aslts: aslt2});
+				val.push({dst : dist3, dnum : "District 3",  aslts: aslt3});
+				val.push({dst : dist4, dnum : "District 4",  aslts: aslt4});
+				val.push({dst : dist5, dnum : "District 5",  aslts: aslt5});
+				val.push({dst : dist6, dnum : "District 6",  aslts: aslt6});
+				val.push({dst : dist7, dnum : "District 7",  aslts: aslt7});
+				val.push({dst : dist8, dnum : "District 8",  aslts: aslt8});
 
-				var r = 300;
+				x.domain(val.map(function(d){return d.dnum;}));
+				y.domain([0, d3.max(val, function(d){return d.aslts;})]);
 
-				var color = d3.scaleOrdinal()
-					.range(["#ff6666", "#ffbb33", "#ffff80", "#aaff80", "#99e6ff", "#b3b3ff", "#ff99cc", "#99ffe6"]);
-
-				var canvas = d3.select("#circ").append("svg")
-					.attr("width", 1200)
-					.attr("height", 1200);
-
-				var group = canvas.append("g")
-					.attr("transform", "translate(350,400)");
-
-				var arc = d3.arc()
-					.innerRadius(200)	
-					.outerRadius(r);
-
-				var pie = d3.pie()
-					.value(function (d){
-						return d.dst;});
-
-				var arcs = group.selectAll(".arc")
-					.data(pie(val))
-					.enter()
-					.append("g")
-					.attr("class", "arc");
-
-				arcs.append("path")
-					.attr("d", arc)
-					.attr("fill", function(d){return color(d.data.dst);});	
-
-				arcs.append("text")
-					.attr("transform", function(d){return "translate(" + arc.centroid(d) + ")";})
-					.attr("text-anchor", "middle")
-					.attr("font-size", "1.5em")
-					.text(function(d){return d.data.num;});
-
-				var legend = canvas.append("g")
-					.attr("class", "legend")
-					.attr("x", 800)
-					.attr("y", 500)
-					.style("margin-top", "25%")
-					.attr("height", 500)
-					.attr("width", 100);
-				legend.selectAll("g").data(val)
-					.enter()
-					.append("g")
-					.each(function(d, i){
-						var g = d3.select(this);
-						g.append("rect")
-							.attr("x", 800)
-							.attr("y", i*25)
-							.attr("width", 10)
-							.attr("height", 10)
-							.style("fill", function(d){return color(d.dst);});
-
-						g.append("text")
-							.attr("x", 825)
-							.attr("y", i*25+10)
-							.attr("height", 10)
-							.text(function(d){return "District" + d.dnum});	
-				});
+				svg.selectAll(".bar")
+					.data(val)
+					.enter().append("rect")
+						.attr("class", "bar")
+						.attr("x", function(d){return x(d.dnum);})
+						.attr("width", x.bandwidth())
+						.attr("y",  function(d){return y(d.aslts);})
+						.attr("height", function(d) {return height - y(d.aslts);});
+				//x axis
+				svg.append("g")
+					.attr("transform", "translate(0," + height + ")")
+					.call(d3.axisBottom(x));
+				//y axis
+				svg.append("g")
+					.call(d3.axisLeft(y));
 });					

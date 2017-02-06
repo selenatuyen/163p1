@@ -1,11 +1,12 @@
 body{
   text-align: center;
+  display: block;
   background: #fff;
 /*  background: -webkit-linear-gradient(#FFDBCC, #FFFFCC); 
   background: -o-linear-gradient(#FFDBCC, #FFFFCC); 
   background: -moz-linear-gradient(#FFDBCC, #FFFFCC); 
   background: linear-gradient(#FFDBCC, #FFFFCC); */
-	font-family: 'Comfortaa', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-weight: 100;
 }
 
@@ -26,6 +27,11 @@ body{
 	margin:auto;
 	height:400px;
 	width:700px;
+}
+
+#vis2{
+	margin:auto;
+	padding-top: -5%;
 }
 
 .arc{

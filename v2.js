@@ -3,7 +3,6 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 	if(err){
 		console.log(err);
 	}
-	console.log(data[0]);
 				var dist1 = 0;
 				var dist2 = 0;
 				var dist3 = 0;
@@ -87,7 +86,6 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 					.attr("text-anchor", "middle")
 					.attr("font-size", "1.5em")
 					.text(function(d){return d.data.num;});
-
 				var legend = canvas.append("g")
 					.attr("class", "legend")
 					.attr("x", 800)
