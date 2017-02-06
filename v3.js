@@ -108,6 +108,7 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 					.data(val)
 					.enter().append("rect")
 						.attr("class", "bar")
+						.attr("fill", "#800000")
 						.attr("x", function(d){return x(d.dnum);})
 						.attr("width", x.bandwidth())
 						.attr("y",  function(d){return y(d.aslts);})

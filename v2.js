@@ -90,7 +90,7 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 					.attr("class", "legend")
 					.attr("x", 800)
 					.attr("y", 500)
-					.style("margin-top", "25%")
+					.style("margin-top", "35%")
 					.attr("height", 500)
 					.attr("width", 100);
 				legend.selectAll("g").data(val)
