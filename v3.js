@@ -87,7 +87,7 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 					}
 				})
  
-				console.log(aslt1 + " " + aslt2 + " " + aslt3 + " " + aslt4 + " " + aslt5 + " " + aslt6 + " " + aslt7 + " " + aslt8);
+				// console.log(aslt1 + " " + aslt2 + " " + aslt3 + " " + aslt4 + " " + aslt5 + " " + aslt6 + " " + aslt7 + " " + aslt8);
 				var burgTot = aslt1 + aslt2 + aslt3 + aslt4 + aslt5 + aslt6 + aslt7 + aslt8;
 				var tot = dist1 + dist2 + dist3 + dist4 + dist5 + dist6 + dist7 + dist8;
 
@@ -116,8 +116,19 @@ d3.csv('Electronic_Police_Report_2015.csv', function(err, data){
 				//x axis
 				svg.append("g")
 					.attr("transform", "translate(0," + height + ")")
-					.call(d3.axisBottom(x));
+					.call(d3.axisBottom(x))
+				  .append("text")
+					.attr("x", 6)
+					.attr("dx", ".71em")
+					.style("text-anchor", "end")
+					.text("District");
 				//y axis
 				svg.append("g")
-					.call(d3.axisLeft(y));
+					.call(d3.axisLeft(y))
+				  .append("text")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", ".71em")
+					.style("text-anchor", "end")
+					.text("Number of Assualts");;
 });					
