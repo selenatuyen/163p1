@@ -24,10 +24,12 @@ d3.csv('Electronic_Police_Report_2015.csv', function(data){
 		}
 	})
 	var total = numBlack + numAsian + numHispanic + numWhite;
-	
+	var margin = {top: 20, right: 20, bottom: 30, left: 60},
+	width = 960 - margin.left - margin.right,
+	height = 500 - margin.top - margin.bottom;
 	var canvas = d3.select("#bar").append("svg")
-		.attr("width", 500)
-		.attr("height", 500);
+		.attr("width", width)
+		.attr("height", height);
 
 	canvas
 		.append("rect")

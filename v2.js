@@ -56,9 +56,13 @@ function v2() {
 		var color = d3.scaleOrdinal()
 			.range(["#ff6666", "#ffbb33", "#ffff80", "#aaff80", "#99e6ff", "#b3b3ff", "#ff99cc", "#99ffe6"]);
 
-		var canvas = d3.select("#circ").append("svg")
-			.attr("width", 1200)
-			.attr("height", 1200);
+		var margin = {top: 20, right: 20, bottom: 30, left: 60},
+		width = 960 - margin.left - margin.right,
+		height = 770 - margin.top - margin.bottom;
+
+		var canvas = d3.select("#vis1").append("svg")
+			.attr("width", width)
+			.attr("height", height);
 
 		var group = canvas.append("g")
 			.attr("transform", "translate(350,400)");
@@ -98,15 +102,15 @@ function v2() {
 			.each(function(d, i){
 				var g = d3.select(this);
 				g.append("rect")
-					.attr("x", 800)
-					.attr("y", i*35+90)
+					.attr("x", 720)
+					.attr("y", i*35+160)
 					.attr("width", 10)
 					.attr("height", 10)
 					.style("fill", function(d){return color(d.dst);});
 
 				g.append("text")
-					.attr("x", 825)
-					.attr("y", i*35+100)
+					.attr("x", 745)
+					.attr("y", i*35+170)
 					.attr("height", 10)
 					.text(function(d){return "District " + d.dnum});	
 		});

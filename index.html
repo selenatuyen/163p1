@@ -4,20 +4,36 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<script src="d3.v4.min.js"></script>
    		<link href="style.css" rel="stylesheet" type="text/css">
+   		<title>Crime in New Orleans</title>
 	</head>
 	<body>
-		<h1>ECS163 Project 1</h1>
-		<h2>Selena Tuyen</h2>
-<!-- 		<div id="bar">
-			<h3>What is the percentage of each race amongst offenders?</h3>
-			<script src="v1.js"></script>
-		</div> -->
-		<div id="circ">
+		<div class="title">
+			<h1>Crime in New Orleans</h1>
+			<p>Selena Tuyen</p>
+		</div>
+		<div class = "introduction">
+			<h2>Introduction</h2>
+			<p>There are eight districts in the East Bank of New Orleans.  Within these eight districts, there were over 113,000 crimes reported in the year 2015.  This data story will investigate the number of crimes reported amongst the eight districts.</p>
+		</div>
+		</br>
+		</br>
+
+		<div id="vis1">
 			<h3>Which district in New Orleans has the most crime?</h3>
 			<script src="v2.js"></script>
 		</div>
-		<p class="caption1">Chart above shows the percentage of crimes reported in each district of New Orleans.</p>
-		<p class="explanation">I chose this question because I wanted to see if all of the districts had a similar amount of crimes reported.  My initial hypothesis was that there would be at least one district that would be outstandingly greater than all the others in the amount of crimes reported.  I decided to use a donut chart because it allows viewers to see how each district is doing in crime rates in relation to all the other districts in New Orleans.  Using a donut chart also allows each district to have it’s own distinct color.  This would not have been as effective in a bar graph.  This visualization gave me a lot of insight to the database, since it disproved my initial hypothesis.  It also has revealed to me that there is an almost even amount of crimes reported in all the districts of New Orleans.  This made me want to dig deeper to see if the evenness would hold if I singled out crimes for assault across all districts.  </p>
+		<p class="caption1">Chart above shows the percentage of crimes reported in each district of New Orleans in the year 2015.</p>
+		<p class="explanation">I chose this question because I wanted to see if all of the districts had a similar amount of crimes reported.  My initial hypothesis was that there would be at least one district that would be outstandingly greater than all the others in the amount of crimes reported.  I decided to use a donut chart because it allows viewers to see how each district is doing in crime rates in relation to all the other districts in New Orleans.  Using a donut chart also allows each district to have it’s own distinct color.  This visualization gave me a lot of insight to the database, since it disproved my initial hypothesis.  It also has revealed to me that there is an almost even amount of crimes reported in all the districts of New Orleans.  This made me want to dig deeper to see if the evenness would hold if I singled out crimes for assault across all districts.  </p>
+		</br>
+		</br>
+		</br>
+		</br>
+		<div id="vis2">
+			<h3>Which district in New Orleans has the most assaults?</h3>
+			<script src="v3.js"></script>
+			<p class="caption">Chart above shows the amount of assualts reported throughout all districts in New Orleans in the year 2015.</p>
+			<p class="explanation">I chose this question because I wanted to see if the amount of assaults reported in all districts would hold the same pattern as overall crimes reported.  I decided to use a bar chart this time since in the previous visualization I found the percentages of crimes reported to be around the same.  Due to this, I think a bar graph would make any differences in the amount of assaults reported more apparent to the viewer.  This visualization revealed that although all the districts seem to have the same amount of overall crimes reported, there is an apparent difference in looking at only reports of assault throughout each district.  I found that district 7 had almost double the amount of reports of assault compared to the other districts.  It is interesting since district 7 also had the most overall crimes reported by a slim margin, but the margin grows significantly when singling out assaults.  To add another layer to this, I wanted to see the breakdown of each month within the district with the most amount of crime.</p>
+		</div>
 		</br>
 		</br>
 		</br>
@@ -27,17 +43,14 @@
 			<!-- <script src="v5.js"></script> -->
 			<script src="v4.js"></script>
 			<p class="caption">Chart above shows the amount of crime reported in District 7 for each month in the year 2015.</p>
-			<p class="explanation"></p>
+			<p class="explanation">After finding that district 7 was still the highest amongst both overall crimes and assaults reported, I wanted to see if the time of year had any effect on crime rates.  I used a line graph to visualize this because it allows viewers to see all 12 months of data and the progression throughout the year.  This visualization revealed that the total number of crimes reported each month were overall pretty consistent.  The only month that glaringly differed was February.  February had a significantly lower number of crimes reported.  My own hypothesis as to why this may be is that February is a shorter month.  </p>
 		</div>
 		</br>
 		</br>
-		</br>
-		</br>
-		<div id="vis2">
-			<h3>Which district in New Orleans has the most assaults?</h3>
-			<script src="v3.js"></script>
-			<p class="caption">Chart above shows the amount of assualts reported throughout all districts in New Orleans.</p>
-			<p class="explanation">I chose this question because I wanted to see if the amount of assaults reported in all districts would hold the same pattern as overall crimes reported.  I decided to use a bar chart this time since in the previous visualization I found the percentages of crimes reported to be around the same.  Due to this, I think a bar graph would make any differences in amounts of assaults reported more apparent to the viewer.  This visualization revealed that although all the districts seem to have the same amount of overall crimes reported, there is an apparent difference in looking at only reports of assault throughout each district.  I found that district 7 had almost double the amount of reports of assault compared to the other districts.  It is interesting since district 7 also had the most overall crimes reported by a slim margin, but the margin grows significantly when singling out assaults.  To add another layer to this, I wanted to see the breakdown of each month within the district with the most amount of crime.  </p>
+
+		<div class = "introduction">
+			<h2>Conclusion</h2>
+			<p>The data set that was presented is the <a href="https://data.nola.gov/Public-Safety-and-Preparedness/Electronic-Police-Report-2015/9ctg-u58a/">2015 New Orleans Police Reports</a>. Throughout this data story, you have learned that district 7 has the most overall crimes and assaults reported.  In addition, you have learned that within district 7, February is the month with the least crimes reported.  </p>
 		</div>
 	</body>
 </html>
